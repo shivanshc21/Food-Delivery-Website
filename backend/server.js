@@ -20,6 +20,7 @@ connectDB();
 // routes
 import { foodRouter } from "./routes/food.route.js";
 import { userRouter } from "./routes/user.route.js";
+import cartRouter from "./routes/cart.route.js";
 
 
 
@@ -27,6 +28,8 @@ app.use("/api/food",foodRouter)
 app.use("/images",express.static('uploads'))
 
 app.use("/api/user",userRouter)
+
+app.use("/api/cart",cartRouter)
 
 app.get("/",(req, res) => {
     res.send("API is working")
