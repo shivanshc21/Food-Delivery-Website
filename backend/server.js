@@ -8,7 +8,6 @@ import { connectDB } from "./config/db.js";
 
 // app config
 const app = express()
-const port = 8000
 
 //middleware
 app.use(express.json())
@@ -37,8 +36,13 @@ app.get("/",(req, res) => {
     res.send("API is working")
 })
 
-app.listen(port, () => {
+if (process.env.NODE_ENV !== "production") {
+    const port = process.env.PORT || 8000;
+
+    app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
 })
+}
+
 
 // mongodb+srv://shivanshchaurasiya2004:shiv20042003@cluster0.rkxispa.mongodb.net/?
